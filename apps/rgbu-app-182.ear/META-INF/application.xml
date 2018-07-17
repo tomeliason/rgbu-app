@@ -1,0 +1,8 @@
+<application version="5">
+  <module>
+    <web>
+      <context-root>/rgbu-app</context-root>
+      <web-uri>rgbu-app.war</web-uri>
+    </web>
+  </module>
+</application>
