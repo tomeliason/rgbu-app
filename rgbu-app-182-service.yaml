@@ -1,0 +1,26 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "rgbu-app-182",
+    "namespace": "default",
+    "labels": {
+      "k8s-app": "rgbu-app-182"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "protocol": "TCP",
+        "port": 8011,
+        "targetPort": 8011
+      }
+    ],
+    "selector": {
+      "k8s-app": "rgbu-app-182"
+    },
+    "type": "LoadBalancer",
+    "sessionAffinity": "None",
+    "externalTrafficPolicy": "Cluster"
+  }
+}
