@@ -27,7 +27,7 @@
         "containers": [
           {
             "name": "rgbu-app-182",
-            "image": "tomeliason/rgbu-app:18.2",
+            "image": "tomeliason/12212-rgbu-app:18.2",
             "resources": {
 		"requests": {
                 "cpu": "500m",
