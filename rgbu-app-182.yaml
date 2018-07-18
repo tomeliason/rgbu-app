@@ -1,0 +1,91 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "name": "rgbu-app-182",
+    "namespace": "default",
+    "labels": {
+      "k8s-app": "rgbu-app-182"
+    }
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "k8s-app": "rgbu-app-182"
+      }
+    },
+    "template": {
+      "metadata": {
+        "name": "rgbu-app-182",
+        "creationTimestamp": null,
+        "labels": {
+          "k8s-app": "rgbu-app-182"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "rgbu-app-182",
+            "image": "tomeliason/rgbu-app:18.2",
+            "resources": {
+		"requests": {
+                "cpu": "500m",
+                "memory": "2000Mi" },
+	    "limits": {
+                "cpu": "1000m",
+                "memory": "4000Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "privileged": false
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {},
+        "schedulerName": "default-scheduler"
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    },
+    "revisionHistoryLimit": 10,
+    "progressDeadlineSeconds": 6000
+  }
+}
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "rgbu-app-182",
+    "namespace": "default",
+    "labels": {
+      "k8s-app": "rgbu-app-182"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "protocol": "TCP",
+        "port": 8011,
+        "targetPort": 8011
+      }
+    ],
+    "selector": {
+      "k8s-app": "rgbu-app-182"
+    },
+    "type": "LoadBalancer",
+    "sessionAffinity": "None",
+    "externalTrafficPolicy": "Cluster"
+  }
+}
