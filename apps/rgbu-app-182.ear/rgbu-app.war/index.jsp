@@ -2,7 +2,7 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <html>
 <title>RGBU App Version 18.2</title>
-<body bgcolor="red">
+<body bgcolor="blue">
 <h3>Welcome to RGBU App Version 18.2</h3>
 <%
   Object attr = session.getAttribute("counter");
